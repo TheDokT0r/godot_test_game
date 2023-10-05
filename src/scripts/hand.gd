@@ -23,16 +23,19 @@ func _draw():
 	draw_line(hand_start_pos, hand_end_pos, Color.BLACK)
 	
 func add_cards(n):
+	print("fuck")
 	for number in n:
 		var card_inst = card.instantiate()
+		card_inst.cardType = "Diamond"
+		card_inst.cardNum = 1
 		add_child(card_inst)
+
 	distribute_cards()
 	
 func distribute_cards():
 	var cards = get_tree().get_nodes_in_group("cards")
 	var hand_ratio
 	for current_card in cards:
-		print("hello world")
 		hand_ratio = float(current_card.get_index()-1)/float(cards.size()-1)
 		current_card.position.x = hand_end_pos.x * hand_ratio
 		current_card.position.y = hand.position.y

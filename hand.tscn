@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://56npwb3ucrwv"]
-
-[node name="Root" type="Node2D"]
-
-[node name="Hand" type="Node2D" parent="."]
-
-[node name="Marker2D" type="Marker2D" parent="."]

@@ -12,8 +12,7 @@ func _process(delta):
 
 
 func _on_start_pressed():
-	pass
-	#get_tree().change_scene_to_file()
+	get_tree().change_scene_to_file("res://src/scenes/hand.tscn")
 
 
 func _on_exit_pressed():

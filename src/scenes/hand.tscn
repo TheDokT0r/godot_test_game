@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://56npwb3ucrwv"]
+
+[ext_resource type="Script" path="res://src/scripts/hand.gd" id="1_hm3l0"]
+[ext_resource type="Script" path="res://src/scenes/cardCurve.gd" id="2_l6vig"]
+
+[sub_resource type="Curve" id="Curve_g5ywv"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="Root" type="Node2D"]
+
+[node name="Hand" type="Node2D" parent="."]
+script = ExtResource("1_hm3l0")
+
+[node name="HandPos" type="Marker2D" parent="Hand"]
+
+[node name="cardcurve" type="Control" parent="Hand"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_l6vig")
+curve = SubResource("Curve_g5ywv")

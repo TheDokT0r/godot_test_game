@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://src/scripts/card.gd" id="1_oajwa"]
 
-[node name="Card" type="Node2D"]
+[node name="Card" type="Node2D" groups=["cards"]]
 script = ExtResource("1_oajwa")
-cardNum = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

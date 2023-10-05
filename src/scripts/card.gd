@@ -1,12 +1,16 @@
 extends Node2D
 
-@export var cardNum: int
-@export_flags("clover", "diamond", "hurt", "spade") var type
+@export_group("Card Props")
+@export_range(0, 13, 1) var cardNum: int # Joker is 0
+enum CardTypes {Clover, Diamond, Hurt, Spade}
+@export var type: CardTypes
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	set
 
+func setCardTexture():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

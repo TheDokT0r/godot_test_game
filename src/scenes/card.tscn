@@ -1,11 +1,70 @@
-[gd_scene load_steps=2 format=3 uid="uid://sx6wu3cy2afy"]
+[gd_scene load_steps=6 format=3 uid="uid://sx6wu3cy2afy"]
 
 [ext_resource type="Script" path="res://src/scripts/card.gd" id="1_oajwa"]
+[ext_resource type="Texture2D" uid="uid://cvbktnc7bfgng" path="res://sprites/pcp/Back.png" id="2_s5amm"]
+
+[sub_resource type="Animation" id="Animation_sgg21"]
+resource_name = "card_flip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("back:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("back/Sprite2D:face")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4xiey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("back:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("back/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_51lxv"]
+_data = {
+"RESET": SubResource("Animation_4xiey"),
+"card_flip": SubResource("Animation_sgg21")
+}
 
 [node name="Card" type="Node2D" groups=["cards"]]
 script = ExtResource("1_oajwa")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="MouseRegion" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -13,5 +72,15 @@ offset_left = -4.0
 offset_top = -4.0
 offset_right = 4.0
 offset_bottom = 4.0
+
+[node name="back" type="Sprite2D" parent="."]
+texture = ExtResource("2_s5amm")
+
+[node name="Sprite2D" type="Sprite2D" parent="back"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_51lxv")
+}
 
 [connection signal="pressed" from="MouseRegion" to="." method="_on_mouse_region_pressed"]

@@ -6,3 +6,9 @@
 script = ExtResource("1_oajwa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="MouseRegion" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="MouseRegion" to="." method="_on_mouse_region_pressed"]
